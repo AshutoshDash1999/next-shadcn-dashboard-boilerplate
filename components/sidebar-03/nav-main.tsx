@@ -14,6 +14,11 @@ import {
   SidebarMenuItem as SidebarMenuSubItem,
   useSidebar,
 } from "@/components/ui/sidebar";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 import { cn } from "@/lib/utils";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import Link from "next/link";
@@ -53,35 +58,74 @@ export default function DashboardNavigation({ routes }: { routes: Route[] }) {
                 }
                 className="w-full"
               >
-                <CollapsibleTrigger render={<SidebarMenuButton className={cn(
-                                              "flex w-full items-center rounded-lg px-2 transition-colors",
-                                              isOpen
-                                                ? "bg-sidebar-muted text-foreground"
-                                                : "text-muted-foreground hover:bg-sidebar-muted hover:text-foreground",
-                                              isCollapsed && "justify-center"
-                                            )} />}>{route.icon}{!isCollapsed && (
-                                              <span className="ml-2 flex-1 text-sm font-medium">
-                                                {route.title}
-                                              </span>
-                                            )}{!isCollapsed && hasSubRoutes && (
-                                              <span className="ml-auto">
-                                                {isOpen ? (
-                                                  <ChevronUp className="size-4" />
-                                                ) : (
-                                                  <ChevronDown className="size-4" />
-                                                )}
-                                              </span>
-                                            )}</CollapsibleTrigger>
+                {isCollapsed ? (
+                  <Tooltip>
+                    <CollapsibleTrigger
+                      render={
+                        <TooltipTrigger
+                          render={
+                            <SidebarMenuButton
+                              className={cn(
+                                "flex w-full items-center justify-center rounded-lg px-2 transition-colors",
+                                isOpen
+                                  ? "bg-sidebar-accent text-sidebar-accent-foreground"
+                                  : "text-sidebar-foreground/70 hover:bg-sidebar-accent hover:text-sidebar-accent-foreground"
+                              )}
+                            />
+                          }
+                        />
+                      }
+                    >
+                      {route.icon}
+                    </CollapsibleTrigger>
+                    <TooltipContent side="right">{route.title}</TooltipContent>
+                  </Tooltip>
+                ) : (
+                  <CollapsibleTrigger
+                    render={
+                      <SidebarMenuButton
+                        className={cn(
+                          "flex w-full items-center rounded-lg px-2 transition-colors",
+                          isOpen
+                            ? "bg-sidebar-accent text-sidebar-accent-foreground"
+                            : "text-sidebar-foreground/70 hover:bg-sidebar-accent hover:text-sidebar-accent-foreground"
+                        )}
+                      />
+                    }
+                  >
+                    {route.icon}
+                    <span className="ml-2 flex-1 text-sm font-medium">
+                      {route.title}
+                    </span>
+                    <span className="ml-auto">
+                      {isOpen ? (
+                        <ChevronUp className="size-4" />
+                      ) : (
+                        <ChevronDown className="size-4" />
+                      )}
+                    </span>
+                  </CollapsibleTrigger>
+                )}
 
                 {!isCollapsed && (
                   <CollapsibleContent>
-                    <SidebarMenuSub className="my-1 ml-3.5 ">
+                    <SidebarMenuSub className="my-1 ml-3.5">
                       {route.subs?.map((subRoute) => (
                         <SidebarMenuSubItem
                           key={`${route.id}-${subRoute.title}`}
                           className="h-auto"
                         >
-                          <SidebarMenuSubButton render={<Link href={subRoute.link} prefetch={true} className="flex items-center rounded-md px-4 py-1.5 text-sm font-medium text-muted-foreground hover:bg-sidebar-muted hover:text-foreground" />}>{subRoute.title}</SidebarMenuSubButton>
+                          <SidebarMenuSubButton
+                            render={
+                              <Link
+                                href={subRoute.link}
+                                prefetch={true}
+                                className="flex items-center rounded-md px-4 py-1.5 text-sm font-medium text-sidebar-foreground/70 hover:bg-sidebar-accent hover:text-sidebar-accent-foreground"
+                              />
+                            }
+                          >
+                            {subRoute.title}
+                          </SidebarMenuSubButton>
                         </SidebarMenuSubItem>
                       ))}
                     </SidebarMenuSub>
@@ -89,14 +133,26 @@ export default function DashboardNavigation({ routes }: { routes: Route[] }) {
                 )}
               </Collapsible>
             ) : (
-              <SidebarMenuButton tooltip={route.title} render={<Link href={route.link} prefetch={true} className={cn(
-                                            "flex items-center rounded-lg px-2 transition-colors text-muted-foreground hover:bg-sidebar-muted hover:text-foreground",
-                                            isCollapsed && "justify-center"
-                                          )} />}>{route.icon}{!isCollapsed && (
-                                            <span className="ml-2 text-sm font-medium">
-                                              {route.title}
-                                            </span>
-                                          )}</SidebarMenuButton>
+              <SidebarMenuButton
+                tooltip={route.title}
+                render={
+                  <Link
+                    href={route.link}
+                    prefetch={true}
+                    className={cn(
+                      "flex items-center rounded-lg px-2 transition-colors text-sidebar-foreground/70 hover:bg-sidebar-accent hover:text-sidebar-accent-foreground",
+                      isCollapsed && "justify-center"
+                    )}
+                  />
+                }
+              >
+                {route.icon}
+                {!isCollapsed && (
+                  <span className="ml-2 text-sm font-medium">
+                    {route.title}
+                  </span>
+                )}
+              </SidebarMenuButton>
             )}
           </SidebarMenuItem>
         );

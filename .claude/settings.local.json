@@ -4,7 +4,8 @@
       "Bash(Get-ChildItem -Path \"e:\\\\Workspace\\\\next-shadcn-dashboard-boilerplate\\\\components\\\\sidebar-03\\\\\" -File -Recurse | Select-Object -ExpandProperty FullName)",
       "Bash(Get-ChildItem -Path \"e:\\\\Workspace\\\\next-shadcn-dashboard-boilerplate\" -Force)",
       "Bash(Select-Object Name, FullName)",
-      "Bash(Remove-Item \"e:\\\\Workspace\\\\next-shadcn-dashboard-boilerplate\\\\app\\\\page.tsx\")"
+      "Bash(Remove-Item \"e:\\\\Workspace\\\\next-shadcn-dashboard-boilerplate\\\\app\\\\page.tsx\")",
+      "Bash(npx tsc *)"
     ]
   }
 }

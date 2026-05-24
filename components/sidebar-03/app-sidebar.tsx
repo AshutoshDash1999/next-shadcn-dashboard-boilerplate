@@ -1,5 +1,6 @@
 "use client";
 
+import type React from "react";
 import {
   Sidebar,
   SidebarContent,
@@ -181,7 +182,17 @@ export function DashboardSidebar() {
   const isCollapsed = state === "collapsed";
 
   return (
-    <Sidebar variant="floating" collapsible="icon">
+    <Sidebar
+      variant="floating"
+      collapsible="icon"
+      style={{
+        "--sidebar": "var(--primary)",
+        "--sidebar-foreground": "var(--primary-foreground)",
+        "--sidebar-accent": "oklch(from var(--primary) calc(l + 0.08) c h)",
+        "--sidebar-accent-foreground": "var(--primary-foreground)",
+        "--sidebar-border": "oklch(from var(--primary) calc(l - 0.04) c h)",
+      } as React.CSSProperties}
+    >
       <SidebarHeader
         className={cn(
           "flex md:pt-3.5",
@@ -193,7 +204,7 @@ export function DashboardSidebar() {
         <a href="#" className="flex items-center gap-2">
           <Logo className="h-8 w-8" />
           {!isCollapsed && (
-            <span className="font-semibold text-black dark:text-white">
+            <span className="font-semibold text-sidebar-foreground">
               Acme
             </span>
           )}
