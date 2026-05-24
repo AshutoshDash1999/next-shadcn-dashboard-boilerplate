@@ -5,7 +5,9 @@
       "Bash(Get-ChildItem -Path \"e:\\\\Workspace\\\\next-shadcn-dashboard-boilerplate\" -Force)",
       "Bash(Select-Object Name, FullName)",
       "Bash(Remove-Item \"e:\\\\Workspace\\\\next-shadcn-dashboard-boilerplate\\\\app\\\\page.tsx\")",
-      "Bash(npx tsc *)"
+      "Bash(npx tsc *)",
+      "Bash(npm run *)",
+      "Bash(curl -s http://localhost:3000)"
     ]
   }
 }
