@@ -1,6 +1,9 @@
-"use client";
+"use client"
 
-import type React from "react";
+import { Logo } from "@/components/sidebar-03/logo"
+import DashboardNavigation from "@/components/sidebar-03/nav-main"
+import { NotificationsPopover } from "@/components/sidebar-03/nav-notifications"
+import { NavUser } from "@/components/sidebar-03/nav-user"
 import {
   Sidebar,
   SidebarContent,
@@ -8,9 +11,9 @@ import {
   SidebarHeader,
   SidebarTrigger,
   useSidebar,
-} from "@/components/ui/sidebar";
-import { cn } from "@/lib/utils";
-import { motion } from "framer-motion";
+} from "@/components/ui/sidebar"
+import { cn } from "@/lib/utils"
+import { motion } from "framer-motion"
 import {
   Activity,
   DollarSign,
@@ -26,12 +29,10 @@ import {
   Store,
   TrendingUp,
   Users,
-} from "lucide-react";
-import { Logo } from "@/components/sidebar-03/logo";
-import type { Route } from "./nav-main";
-import DashboardNavigation from "@/components/sidebar-03/nav-main";
-import { NotificationsPopover } from "@/components/sidebar-03/nav-notifications";
-import { TeamSwitcher } from "@/components/sidebar-03/team-switcher";
+} from "lucide-react"
+import Link from "next/link"
+import type React from "react"
+import type { Route } from "./nav-main"
 
 const sampleNotifications = [
   {
@@ -55,7 +56,7 @@ const sampleNotifications = [
     text: "New user signed up.",
     time: "2h ago",
   },
-];
+]
 
 const dashboardRoutes: Route[] = [
   {
@@ -86,30 +87,6 @@ const dashboardRoutes: Route[] = [
         icon: <Percent className="size-4" />,
       },
     ],
-  },
-  {
-    id: "usage-billing",
-    title: "Usage Billing",
-    icon: <PieChart className="size-4" />,
-    link: "#",
-    subs: [
-      {
-        title: "Meters",
-        link: "#",
-        icon: <PieChart className="size-4" />,
-      },
-      {
-        title: "Events",
-        link: "#",
-        icon: <Activity className="size-4" />,
-      },
-    ],
-  },
-  {
-    id: "benefits",
-    title: "Benefits",
-    icon: <Sparkles className="size-4" />,
-    link: "#",
   },
   {
     id: "customers",
@@ -169,29 +146,26 @@ const dashboardRoutes: Route[] = [
       { title: "Custom Fields", link: "#" },
     ],
   },
-];
+]
 
-const teams = [
-  { id: "1", name: "Alpha Inc.", logo: Logo, plan: "Free" },
-  { id: "2", name: "Beta Corp.", logo: Logo, plan: "Free" },
-  { id: "3", name: "Gamma Tech", logo: Logo, plan: "Free" },
-];
 
 export function DashboardSidebar() {
-  const { state } = useSidebar();
-  const isCollapsed = state === "collapsed";
+  const { state } = useSidebar()
+  const isCollapsed = state === "collapsed"
 
   return (
     <Sidebar
       variant="floating"
       collapsible="icon"
-      style={{
-        "--sidebar": "var(--primary)",
-        "--sidebar-foreground": "var(--primary-foreground)",
-        "--sidebar-accent": "oklch(from var(--primary) calc(l + 0.08) c h)",
-        "--sidebar-accent-foreground": "var(--primary-foreground)",
-        "--sidebar-border": "oklch(from var(--primary) calc(l - 0.04) c h)",
-      } as React.CSSProperties}
+      style={
+        {
+          "--sidebar": "var(--primary)",
+          "--sidebar-foreground": "var(--primary-foreground)",
+          "--sidebar-accent": "oklch(from var(--primary) calc(l + 0.08) c h)",
+          "--sidebar-accent-foreground": "var(--primary-foreground)",
+          "--sidebar-border": "oklch(from var(--primary) calc(l - 0.04) c h)",
+        } as React.CSSProperties
+      }
     >
       <SidebarHeader
         className={cn(
@@ -201,14 +175,12 @@ export function DashboardSidebar() {
             : "flex-row items-center justify-between"
         )}
       >
-        <a href="#" className="flex items-center gap-2">
+        <Link href="#" className="flex items-center gap-2">
           <Logo className="h-8 w-8" />
           {!isCollapsed && (
-            <span className="font-semibold text-sidebar-foreground">
-              Acme
-            </span>
+            <span className="font-semibold text-sidebar-foreground">Acme</span>
           )}
-        </a>
+        </Link>
 
         <motion.div
           key={isCollapsed ? "header-collapsed" : "header-expanded"}
@@ -228,8 +200,8 @@ export function DashboardSidebar() {
         <DashboardNavigation routes={dashboardRoutes} />
       </SidebarContent>
       <SidebarFooter className="px-2">
-        <TeamSwitcher teams={teams} />
+        <NavUser name="Ashutosh Dash" email="dashashutosh1999@gmail.com" />
       </SidebarFooter>
     </Sidebar>
-  );
+  )
 }
