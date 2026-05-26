@@ -1,3 +1,4 @@
+import { KpiGrid } from "@/components/common/kpi-grid"
 import { PageHeader } from "@/components/common/page-header"
 import { getTicketsData } from "@/lib/mock-data"
 import { AgentCardsRow } from "./_components/agent-cards-row"
@@ -7,14 +8,13 @@ import { StatusBreakdownChart } from "./_components/status-breakdown-chart"
 import { TicketVolumeChart } from "./_components/ticket-volume-chart"
 import { TicketsByAgentChart } from "./_components/tickets-by-agent-chart"
 import { TicketsByCategoryChart } from "./_components/tickets-by-category-chart"
-import { KpiGrid } from "@/components/common/kpi-grid"
 import { TicketsTable } from "./_components/tickets-table"
 
 export default function TicketsPage() {
   const data = getTicketsData()
 
   return (
-    <div className="flex flex-1 flex-col gap-6 overflow-auto p-6">
+    <div className="flex flex-col gap-6 overflow-auto p-6">
       <PageHeader
         title="Tickets"
         description="Support volume, agents, and customer satisfaction"
@@ -25,9 +25,7 @@ export default function TicketsPage() {
         <TicketsByCategoryChart data={data.charts.byCategory} />
         <TicketVolumeChart data={data.charts.volume30Days} />
         <StatusBreakdownChart data={data.charts.statusBreakdown} />
-        <ResolutionByPriorityChart
-          data={data.charts.resolutionByPriority}
-        />
+        <ResolutionByPriorityChart data={data.charts.resolutionByPriority} />
         <TicketsByAgentChart data={data.charts.ticketsByAgent} />
         <CsatTrendChart data={data.charts.csatTrend} />
       </div>

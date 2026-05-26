@@ -13,7 +13,6 @@ import {
   useSidebar,
 } from "@/components/ui/sidebar"
 import { cn } from "@/lib/utils"
-import { motion } from "framer-motion"
 import {
   IconCurrencyDollar,
   IconHome,
@@ -21,6 +20,7 @@ import {
   IconTrendingUp,
   IconUsers,
 } from "@tabler/icons-react"
+import { motion } from "framer-motion"
 import Link from "next/link"
 import type React from "react"
 import type { Route } from "./nav-main"
@@ -87,19 +87,7 @@ export function DashboardSidebar() {
   const isCollapsed = state === "collapsed"
 
   return (
-    <Sidebar
-      variant="floating"
-      collapsible="icon"
-      style={
-        {
-          "--sidebar": "var(--primary)",
-          "--sidebar-foreground": "var(--primary-foreground)",
-          "--sidebar-accent": "oklch(from var(--primary) calc(l + 0.08) c h)",
-          "--sidebar-accent-foreground": "var(--primary-foreground)",
-          "--sidebar-border": "oklch(from var(--primary) calc(l - 0.04) c h)",
-        } as React.CSSProperties
-      }
-    >
+    <Sidebar variant="floating" collapsible="icon">
       <SidebarHeader
         className={cn(
           "flex md:pt-3.5",

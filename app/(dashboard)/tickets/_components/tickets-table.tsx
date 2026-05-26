@@ -21,13 +21,6 @@ import {
 } from "@/lib/badge-variants"
 import type { Ticket } from "@/lib/mock-data/types"
 
-function formatDate(iso: string) {
-  return new Date(iso).toLocaleDateString("en-US", {
-    month: "short",
-    day: "numeric",
-    year: "numeric",
-  })
-}
 
 export function TicketsTable({ tickets }: { tickets: Ticket[] }) {
   return (
@@ -37,19 +30,15 @@ export function TicketsTable({ tickets }: { tickets: Ticket[] }) {
         <CardDescription>Support queue and resolution tracking</CardDescription>
       </CardHeader>
       <CardContent>
+        <div className="overflow-x-auto">
         <Table>
           <TableHeader>
             <TableRow>
               <TableHead>ID</TableHead>
               <TableHead>Title</TableHead>
               <TableHead>Customer</TableHead>
-              <TableHead>Agent</TableHead>
-              <TableHead>Category</TableHead>
               <TableHead>Priority</TableHead>
               <TableHead>Status</TableHead>
-              <TableHead>Created</TableHead>
-              <TableHead>Updated</TableHead>
-              <TableHead>Resolution</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
@@ -58,8 +47,6 @@ export function TicketsTable({ tickets }: { tickets: Ticket[] }) {
                 <TableCell className="font-medium">{ticket.id}</TableCell>
                 <TableCell>{ticket.title}</TableCell>
                 <TableCell>{ticket.customer}</TableCell>
-                <TableCell>{ticket.agent}</TableCell>
-                <TableCell>{ticket.category}</TableCell>
                 <TableCell>
                   <Badge variant={getTicketPriorityVariant(ticket.priority)}>
                     {formatStatusLabel(ticket.priority)}
@@ -70,19 +57,11 @@ export function TicketsTable({ tickets }: { tickets: Ticket[] }) {
                     {formatStatusLabel(ticket.status)}
                   </Badge>
                 </TableCell>
-                <TableCell className="text-muted-foreground">
-                  {formatDate(ticket.createdAt)}
-                </TableCell>
-                <TableCell className="text-muted-foreground">
-                  {formatDate(ticket.lastUpdated)}
-                </TableCell>
-                <TableCell>
-                  {ticket.resolutionTime ?? "—"}
-                </TableCell>
               </TableRow>
             ))}
           </TableBody>
         </Table>
+        </div>
       </CardContent>
     </Card>
   )

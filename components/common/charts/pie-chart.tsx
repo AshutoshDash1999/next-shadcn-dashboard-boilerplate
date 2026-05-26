@@ -12,6 +12,7 @@ type PieChartWidgetProps = {
   data: { label: string; value: number }[]
   config: ChartConfig
   innerRadius?: number
+  cornerRadius?: number
   className?: string
 }
 
@@ -27,6 +28,7 @@ export function PieChartWidget({
   data,
   config,
   innerRadius = 0,
+  cornerRadius = 10,
   className,
 }: PieChartWidgetProps) {
   const chartData = data.map((d) => ({
@@ -35,7 +37,10 @@ export function PieChartWidget({
   }))
 
   return (
-    <ChartContainer config={config} className={className ?? "mx-auto h-[280px] w-full"}>
+    <ChartContainer
+      config={config}
+      className={className ?? "mx-auto h-[280px] w-full"}
+    >
       <PieChart>
         <ChartTooltip content={<ChartTooltipContent hideLabel />} />
         <Pie
@@ -46,13 +51,11 @@ export function PieChartWidget({
           cy="50%"
           innerRadius={innerRadius}
           outerRadius={100}
-          paddingAngle={innerRadius > 0 ? 2 : 0}
+          cornerRadius={cornerRadius}
+          paddingAngle={innerRadius > 0 || cornerRadius > 0 ? 2 : 0}
         >
           {chartData.map((_, index) => (
-            <Cell
-              key={`cell-${index}`}
-              fill={COLORS[index % COLORS.length]}
-            />
+            <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
           ))}
         </Pie>
       </PieChart>
