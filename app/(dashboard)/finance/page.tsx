@@ -2,7 +2,6 @@ import { PageHeader } from "@/components/common/page-header"
 import { getFinanceData } from "@/lib/mock-data"
 import { CumulativeRevenueChart } from "./_components/cumulative-revenue-chart"
 import { KpiGrid } from "@/components/common/kpi-grid"
-import { IconCurrencyDollar, IconCreditCard, IconTrendingUp, IconFileText } from "@tabler/icons-react"
 import { MrrChart } from "./_components/mrr-chart"
 import { PlWaterfallChart } from "./_components/pl-waterfall-chart"
 import { RevenueBreakdownChart } from "./_components/revenue-breakdown-chart"
@@ -19,7 +18,7 @@ export default function FinancePage() {
         title="Finance"
         description="Revenue, expenses, and transaction overview"
       />
-      <KpiGrid kpis={data.kpis} icons={[IconCurrencyDollar, IconCreditCard, IconTrendingUp, IconFileText]} />
+      <KpiGrid kpis={data.kpis} iconSet="finance" />
       <RevenueExpensesChart data={data.charts.revenueVsExpenses} />
       <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
         <RevenueBreakdownChart data={data.charts.revenueByPlan} />
