@@ -13,7 +13,7 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { cn } from "@/lib/utils";
-import { ChevronDown } from "lucide-react";
+import { IconChevronDown } from "@tabler/icons-react";
 import Link from "next/link";
 import type React from "react";
 
@@ -97,7 +97,7 @@ export default function DashboardNavigation({ routes }: { routes: Route[] }) {
                 >
                   {route.icon}
                   <span className="ml-2 flex-1 text-left">{route.title}</span>
-                  <ChevronDown className="size-4 ml-auto transition-transform group-aria-expanded:rotate-180" />
+                  <IconChevronDown className="size-4 ml-auto transition-transform group-aria-expanded:rotate-180" />
                 </Accordion.Trigger>
               )}
             </Accordion.Header>

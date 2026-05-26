@@ -15,12 +15,12 @@ import {
 import { cn } from "@/lib/utils"
 import { motion } from "framer-motion"
 import {
-  DollarSign,
-  Home,
-  Ticket,
-  TrendingUp,
-  Users,
-} from "lucide-react"
+  IconCurrencyDollar,
+  IconHome,
+  IconTicket,
+  IconTrendingUp,
+  IconUsers,
+} from "@tabler/icons-react"
 import Link from "next/link"
 import type React from "react"
 import type { Route } from "./nav-main"
@@ -53,31 +53,31 @@ const dashboardRoutes: Route[] = [
   {
     id: "home",
     title: "Home",
-    icon: <Home className="size-4" />,
+    icon: <IconHome className="size-4" />,
     link: "/",
   },
   {
     id: "customers",
     title: "Customers",
-    icon: <Users className="size-4" />,
+    icon: <IconUsers className="size-4" />,
     link: "/customers",
   },
   {
     id: "analytics",
     title: "Analytics",
-    icon: <TrendingUp className="size-4" />,
+    icon: <IconTrendingUp className="size-4" />,
     link: "/analytics",
   },
   {
     id: "finance",
     title: "Finance",
-    icon: <DollarSign className="size-4" />,
+    icon: <IconCurrencyDollar className="size-4" />,
     link: "/finance",
   },
   {
     id: "tickets",
     title: "Tickets",
-    icon: <Ticket className="size-4" />,
+    icon: <IconTicket className="size-4" />,
     link: "/tickets",
   },
 ]

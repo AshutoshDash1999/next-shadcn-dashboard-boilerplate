@@ -1,7 +1,8 @@
 import { PageHeader } from "@/components/common/page-header"
 import { getCustomersData } from "@/lib/mock-data"
 import { CustomersByRegionChart } from "./_components/customers-by-region-chart"
-import { CustomersKpiGrid } from "./_components/customers-kpi-grid"
+import { KpiGrid } from "@/components/common/kpi-grid"
+import { IconUsers, IconUserCheck, IconUserX, IconWallet } from "@tabler/icons-react"
 import { CustomersTable } from "./_components/customers-table"
 import { GrowthChart } from "./_components/growth-chart"
 import { NewVsReturningChart } from "./_components/new-vs-returning-chart"
@@ -18,7 +19,7 @@ export default function CustomersPage() {
         title="Customers"
         description="Customer growth, plans, and retention metrics"
       />
-      <CustomersKpiGrid kpis={data.kpis} />
+      <KpiGrid kpis={data.kpis} icons={[IconUsers, IconUserCheck, IconUserX, IconWallet]} />
       <div className="grid gap-4 lg:grid-cols-3">
         <div className="lg:col-span-2">
           <GrowthChart data={data.charts.growth12Months} />

@@ -10,7 +10,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { BellIcon } from "lucide-react";
+import { IconBell } from "@tabler/icons-react";
 
 type Notification = {
   id: string;
@@ -27,7 +27,7 @@ export function NotificationsPopover({
 }) {
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger render={<Button variant="ghost" size="icon" className="rounded-full" aria-label="Open notifications" />}><BellIcon className="size-5" /></DropdownMenuTrigger>
+      <DropdownMenuTrigger render={<Button variant="ghost" size="icon" className="rounded-full" aria-label="Open notifications" />}><IconBell className="size-5" /></DropdownMenuTrigger>
       <DropdownMenuContent side="right" className="w-80 my-6">
         <DropdownMenuLabel>Notifications</DropdownMenuLabel>
         <DropdownMenuSeparator />

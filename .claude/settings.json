@@ -4,7 +4,11 @@
       "Bash(npx playwright *)",
       "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3000/)",
       "Bash(npx shadcn@latest add accordion --yes)",
-      "Bash(Select-String \"@base-ui\")"
+      "Bash(Select-String \"@base-ui\")",
+      "Bash(python3 -c ' *)",
+      "Bash(node -e ' *)",
+      "Bash(npm uninstall *)",
+      "Bash(Remove-Item \"e:\\\\Workspace\\\\next-shadcn-dashboard-boilerplate\\\\app\\\\\\(dashboard\\)\\\\_components\\\\home-kpi-grid.tsx\" \"e:\\\\Workspace\\\\next-shadcn-dashboard-boilerplate\\\\app\\\\\\(dashboard\\)\\\\analytics\\\\_components\\\\analytics-kpi-grid.tsx\" \"e:\\\\Workspace\\\\next-shadcn-dashboard-boilerplate\\\\app\\\\\\(dashboard\\)\\\\finance\\\\_components\\\\finance-kpi-grid.tsx\" \"e:\\\\Workspace\\\\next-shadcn-dashboard-boilerplate\\\\app\\\\\\(dashboard\\)\\\\tickets\\\\_components\\\\tickets-kpi-grid.tsx\" \"e:\\\\Workspace\\\\next-shadcn-dashboard-boilerplate\\\\app\\\\\\(dashboard\\)\\\\customers\\\\_components\\\\customers-kpi-grid.tsx\")"
     ]
   }
 }

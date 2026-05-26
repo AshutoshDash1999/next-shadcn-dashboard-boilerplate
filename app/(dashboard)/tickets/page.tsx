@@ -7,7 +7,8 @@ import { StatusBreakdownChart } from "./_components/status-breakdown-chart"
 import { TicketVolumeChart } from "./_components/ticket-volume-chart"
 import { TicketsByAgentChart } from "./_components/tickets-by-agent-chart"
 import { TicketsByCategoryChart } from "./_components/tickets-by-category-chart"
-import { TicketsKpiGrid } from "./_components/tickets-kpi-grid"
+import { KpiGrid } from "@/components/common/kpi-grid"
+import { IconInbox, IconCircleCheck, IconClock, IconStar } from "@tabler/icons-react"
 import { TicketsTable } from "./_components/tickets-table"
 
 export default function TicketsPage() {
@@ -19,7 +20,7 @@ export default function TicketsPage() {
         title="Tickets"
         description="Support volume, agents, and customer satisfaction"
       />
-      <TicketsKpiGrid kpis={data.kpis} />
+      <KpiGrid kpis={data.kpis} icons={[IconInbox, IconCircleCheck, IconClock, IconStar]} />
       <AgentCardsRow agents={data.agents} />
       <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
         <TicketsByCategoryChart data={data.charts.byCategory} />

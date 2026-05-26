@@ -2,7 +2,8 @@ import { PageHeader } from "@/components/common/page-header"
 import { getHomeData } from "@/lib/mock-data"
 import { ActivityTable } from "./_components/activity-table"
 import { DauComparisonChart } from "./_components/dau-comparison-chart"
-import { HomeKpiGrid } from "./_components/home-kpi-grid"
+import { KpiGrid } from "@/components/common/kpi-grid"
+import { IconCurrencyDollar, IconUsers, IconUserPlus, IconUserMinus } from "@tabler/icons-react"
 import { RevenueChart } from "./_components/revenue-chart"
 import { SignupsChart } from "./_components/signups-chart"
 import { TeamSpotlight } from "./_components/team-spotlight"
@@ -18,7 +19,7 @@ export default function HomePage() {
         title="Dashboard"
         description="Overview of revenue, users, and platform activity"
       />
-      <HomeKpiGrid kpis={data.kpis} />
+      <KpiGrid kpis={data.kpis} icons={[IconCurrencyDollar, IconUsers, IconUserPlus, IconUserMinus]} />
       <div className="grid gap-4 lg:grid-cols-3">
         <div className="lg:col-span-2">
           <RevenueChart data={data.charts.revenueOver12Months} />

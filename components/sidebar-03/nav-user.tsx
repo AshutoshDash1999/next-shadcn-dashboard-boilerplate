@@ -16,7 +16,7 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from "@/components/ui/sidebar"
-import { ChevronsUpDown, LogOut, Settings, User } from "lucide-react"
+import { IconSelector, IconLogout, IconSettings, IconUser } from "@tabler/icons-react"
 import Link from "next/link"
 
 type NavUserProps = {
@@ -60,7 +60,7 @@ export function NavUser({ name, email, avatar }: NavUserProps) {
                   <span className="truncate font-semibold">{name}</span>
                   <span className="truncate text-xs opacity-70">{email}</span>
                 </div>
-                <ChevronsUpDown className="ml-auto size-4" />
+                <IconSelector className="ml-auto size-4" />
               </>
             )}
           </DropdownMenuTrigger>
@@ -93,18 +93,18 @@ export function NavUser({ name, email, avatar }: NavUserProps) {
             <DropdownMenuSeparator />
 
             <DropdownMenuItem className="cursor-pointer gap-2" render={<Link href="/profile" />}>
-              <User className="size-4" />
+              <IconUser className="size-4" />
               Profile
             </DropdownMenuItem>
             <DropdownMenuItem className="cursor-pointer gap-2" render={<Link href="/settings" />}>
-              <Settings className="size-4" />
+              <IconSettings className="size-4" />
               Settings
             </DropdownMenuItem>
 
             <DropdownMenuSeparator />
 
             <DropdownMenuItem className="cursor-pointer gap-2 text-destructive focus:text-destructive">
-              <LogOut className="size-4" />
+              <IconLogout className="size-4" />
               Logout
             </DropdownMenuItem>
           </DropdownMenuContent>

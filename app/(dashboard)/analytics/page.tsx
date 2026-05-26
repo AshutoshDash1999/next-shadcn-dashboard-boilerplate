@@ -1,6 +1,7 @@
 import { PageHeader } from "@/components/common/page-header"
 import { getAnalyticsData } from "@/lib/mock-data"
-import { AnalyticsKpiGrid } from "./_components/analytics-kpi-grid"
+import { KpiGrid } from "@/components/common/kpi-grid"
+import { IconEye, IconPointer, IconChartBar, IconClock } from "@tabler/icons-react"
 import { DeviceBreakdownChart } from "./_components/device-breakdown-chart"
 import { PageViewsChart } from "./_components/page-views-chart"
 import { ScatterChartWidget } from "./_components/scatter-chart"
@@ -18,7 +19,7 @@ export default function AnalyticsPage() {
         title="Analytics"
         description="Traffic, engagement, and page performance"
       />
-      <AnalyticsKpiGrid kpis={data.kpis} />
+      <KpiGrid kpis={data.kpis} icons={[IconEye, IconPointer, IconChartBar, IconClock]} />
       <PageViewsChart data={data.charts.pageViewsVsVisitors} />
       <div className="grid gap-4 md:grid-cols-2">
         <TrafficHeatmap data={data.charts.trafficHeatmap} />
